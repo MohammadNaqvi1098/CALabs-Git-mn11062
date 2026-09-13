@@ -2,22 +2,17 @@
 .globl main
 main:
 
-li x19 , 4 # temporary
+li x19 , 6 # give the value of x
 li  x1 , 1 # x
 li  x2 , 2 # x
 li  x3 , 3 # x
 li  x4 , 4 # x
 
 li x21 , 2 # a
-li x22 , 2 # b
+li x22 , 3 # b
 li x23 , 2 # c
-
 li x10, 2  # immediate 2
 
-
-#x21 = a
-#x22 = b
-#x23 = c
 
 bne x1 , x19 , Else1
     Case1:
@@ -34,11 +29,13 @@ Else2:
         mul x21 ,x22,x10
         beq x0 , x0, Exit
 Else3:
-    bne x4 , x19, Exit
+    bne x4 , x19, default
     Case4:
         div x21 ,x22,x10
         beq x0 , x0, Exit
-Exit:
+default:
     li x21 , 0 
     
-
+Exit:
+end:
+    j end
