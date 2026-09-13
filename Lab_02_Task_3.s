@@ -4,7 +4,7 @@ main:
 
 
 li x10 , 0  # x10 = i
-li x11, 10   #  x11 = a 
+li x11, 0x100   #  x11 = a 
 li x12, 0    # x12 = sum
 
 li x20 , 10 
@@ -16,12 +16,13 @@ For:
     sw x10 , 0(x13)    # a[i] = i
 
     addi x10, x10, 1  # i++
-    beq x0 , x0 , For  # go back to For 
+    j For  # go back to For 
 
 Exit:
+
     
 li x10 , 0  # x10 = i
-li x11, 10   #  x11 = a 
+li x11, 0x100   #  x11 = a 
 li x12, 0    # x12 = sum
 
 li x20 , 10 
@@ -35,8 +36,10 @@ For2:
 
     add x12, x12, x10  # sum += a[i]
     addi x10, x10, 1  # i++
-    beq x0 , x0 , For2  # go back to For2
+    j  For2  # go back to For2
 
 Exit2:
     # Exit label for the second loop        
 
+end:
+    j end
